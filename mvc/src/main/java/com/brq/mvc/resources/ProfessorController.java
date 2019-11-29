@@ -3,37 +3,42 @@ package com.brq.mvc.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.mvc.domain.Professor;
+import com.brq.mvc.services.ProfessorService;
 
 @RestController
 
 public class ProfessorController {
 	
+	@Autowired
+	private ProfessorService service;
+	
 	List <Professor> listaProfessor = new ArrayList<Professor> ();
 	
 	@RequestMapping(value="/professor", method= RequestMethod.GET)
-	public List<Professor> welcome() {
+	public List<Professor> getAllProfessores() {
 		
-		return listaProfessor;
+		return service.getAllProfessores();
 	}
 	
 	@RequestMapping(value="/professor", method= RequestMethod.POST)
-	public boolean criarProfessor () {
-		Professor p1 = new Professor();
+	public Professor criarProfessor (@RequestBody Professor prof) {
+/*		Professor p1 = new Professor();
 		p1.setId(1);
-		p1.setNome("Fabrizio");
+		p1.setNome("Fabrizio"); */
 		
-		System.out.println(p1);
+		System.out.println(prof);
 		
-		listaProfessor.add(p1);
-		
-		return true;
-	}
+	//	listaProfessor.add(prof);
+		return service.criarProfessor(prof);
+		}
 	
 	@RequestMapping(value="/professor/{id}", method= RequestMethod.GET)
 	public Professor getProfessor(@PathVariable("id") int idProfessor) {
