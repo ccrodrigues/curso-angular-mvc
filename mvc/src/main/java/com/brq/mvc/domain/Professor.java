@@ -15,14 +15,14 @@ public class Professor implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idprofessor;
-	private String none;
+	private String nome;
 	
 	public Professor() { }
 	
 	public Professor(int idprofessor, String none) {
 		super();
 		this.idprofessor = idprofessor;
-		this.none = none;
+		this.nome = none;
 	}
 	public int getIdprofessor() {
 		return idprofessor;
@@ -30,16 +30,16 @@ public class Professor implements Serializable {
 	public void setIdprofessor(int idprofessor) {
 		this.idprofessor = idprofessor;
 	}
-	public String getNone() {
-		return none;
+	public String getNome() {
+		return nome;
 	}
-	public void setNone(String nome) {
-		this.none = nome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	@Override
 	public String toString() {
-		return "Professor [id=" + idprofessor + ", nome=" + none + "]";
+		return "Professor [id=" + idprofessor + ", nome=" + nome + "]";
 	}
 	
 }
