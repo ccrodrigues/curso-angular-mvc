@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,9 +50,9 @@ public class ProdutoController {
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
 	
-	@RequestMapping(value="", method = RequestMethod.POST)
-	public ResponseEntity<Produto> save(@RequestBody Produto Produto){
-		return ResponseEntity.ok().body(service.save(Produto));
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Produto> save(@RequestBody @Valid Produto obj){
+		return ResponseEntity.ok().body(service.save(obj));
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.PATCH)

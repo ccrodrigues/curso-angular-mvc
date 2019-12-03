@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Produto implements Serializable {
@@ -23,8 +25,10 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@NotNull(message = "O NOME NÃO PODE ESTAR EM BRANCO !!!!!!!!!")
 	private String nome;
 	
+	@PositiveOrZero (message = "O VALOR TEM QUE SER MAIOR QUE ZERO !!!!!!")
 	private int valor;
 	
 	@ManyToMany()
