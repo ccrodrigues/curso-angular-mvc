@@ -12,8 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Categoria {
+public class Categoria implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,6 +26,7 @@ public class Categoria {
 	private String nome;
 	
 	@ManyToMany(mappedBy = "categorias")
+	@JsonIgnore
 	private List<Produto> produtos;
 
 	public int getId() {
@@ -46,5 +51,40 @@ public class Categoria {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+
+	public Categoria(String nome, List<Produto> produtos) {
+		super();
+		this.nome = nome;
+		this.produtos = produtos;
+	}
+	
+	public Categoria() {}
+
+	@Override
+	public String toString() {
+		return "Categoria [id=" + id + ", nome=" + nome + ", produtos=" + produtos + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Categoria other = (Categoria) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 }

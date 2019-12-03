@@ -1,6 +1,7 @@
 package com.brq.mvc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Produto {
+public class Produto implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,7 +33,7 @@ public class Produto {
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
 	)
 	
-	private List<Categoria> categorias;
+	private List<Categoria> categorias = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -62,5 +65,41 @@ public class Produto {
 
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+	
+	public Produto() {}
+
+	public Produto(int id, String nome, int valor) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.valor = valor;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", nome=" + nome + ", valor=" + valor + ", categorias=" + categorias + "]";
 	}
 }

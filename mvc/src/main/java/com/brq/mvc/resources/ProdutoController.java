@@ -12,28 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brq.mvc.domain.Aluno;
-import com.brq.mvc.resources.exception.AlunoNotFoundException;
-import com.brq.mvc.services.AlunoService;
+import com.brq.mvc.domain.Nota;
+import com.brq.mvc.domain.Produto;
+import com.brq.mvc.resources.exception.NotaNotFoundException;
+import com.brq.mvc.resources.exception.ObjectNotFoundException;
+import com.brq.mvc.resources.exception.ProdutoNotFoundException;
+import com.brq.mvc.services.NotaService;
+import com.brq.mvc.services.ProdutoService;
 
 @RestController
-@RequestMapping(value="/alunos")
-public class AlunoController {
+@RequestMapping(value="/produtos")
+public class ProdutoController {
 	
 	@Autowired
-	private AlunoService service;
+	private ProdutoService service;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public ResponseEntity< List<Aluno> > getAll() {
+	public ResponseEntity< List<Produto> > getAll() {
 		return ResponseEntity.ok().body(service.getAll());
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
-	public ResponseEntity< Optional<Aluno> > findById(@PathVariable("id") int idAluno) {
-		Optional<Aluno> obj = service.findById(idAluno);
+	public ResponseEntity<Optional<Produto> > findById(@PathVariable("id") int id) {
+		Optional<Produto> obj = service.findById(id);
 			
 		if (obj.isPresent() == false) {
-			throw new AlunoNotFoundException(idAluno);
+			throw new ObjectNotFoundException(id, new Produto());
 		}
 		
 		return ResponseEntity.ok().body(obj);
@@ -45,18 +49,18 @@ public class AlunoController {
 	}
 	
 	@RequestMapping(value="", method = RequestMethod.POST)
-	public ResponseEntity<Aluno> save(@RequestBody Aluno aluno){
-		return ResponseEntity.ok().body(service.save(aluno));
+	public ResponseEntity<Produto> save(@RequestBody Produto Produto){
+		return ResponseEntity.ok().body(service.save(Produto));
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.PATCH)
-	public ResponseEntity<Aluno> update(@RequestBody Aluno aluno, @PathVariable("id") int id) {
-		return ResponseEntity.ok().body(service.update(id, aluno));
+	public ResponseEntity<Produto> update(@RequestBody Produto Produto, @PathVariable("id") int id) {
+		return ResponseEntity.ok().body(service.update(id, Produto));
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Aluno> put(@RequestBody Aluno aluno, @PathVariable("id") int id) {
-		aluno.setId(id);
-		return ResponseEntity.ok().body(service.save(aluno));
+	public ResponseEntity<Produto> put(@RequestBody Produto Produto, @PathVariable("id") int id) {
+		Produto.setId(id);
+		return ResponseEntity.ok().body(service.save(Produto));
 	}
 }

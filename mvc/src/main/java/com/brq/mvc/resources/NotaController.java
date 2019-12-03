@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.mvc.domain.Nota;
+import com.brq.mvc.resources.exception.NotaNotFoundException;
 import com.brq.mvc.services.NotaService;
 
 @RestController
@@ -30,15 +31,12 @@ public class NotaController {
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public ResponseEntity< Optional<Nota> > findById(@PathVariable("id") int idNota) {
 		Optional<Nota> obj = service.findById(idNota);
+			
+		if (obj.isPresent() == false) {
+			throw new NotaNotFoundException(idNota);
+		}
 		
-//		if (obj.isPresent() == true) {
-//			return ResponseEntity.ok().body(obj);
-//		}
-//		else {
-//		return ResponseEntity.badRequest().build();
-//		}
-		
-	return (obj.isPresent() == true ? ResponseEntity.ok().body(obj) : ResponseEntity.badRequest().build());
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)

@@ -11,7 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Curso {
+public class Curso implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +43,36 @@ public class Curso {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
+	public Curso(String descricao, Professor professor) {
+		super();
+		this.descricao = descricao;
+		this.professor = professor;
+	}
+	
+	public Curso() {}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Curso other = (Curso) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Curso [id=" + id + ", descricao=" + descricao + ", professor=" + professor + "]";
+	}
+	
 }

@@ -19,9 +19,8 @@ public class Professor implements Serializable {
 	
 	public Professor() { }
 	
-	public Professor(int idprofessor, String none) {
+	public Professor(String none) {
 		super();
-		this.idprofessor = idprofessor;
 		this.nome = none;
 	}
 	public int getIdprofessor() {
@@ -40,6 +39,28 @@ public class Professor implements Serializable {
 	@Override
 	public String toString() {
 		return "Professor [id=" + idprofessor + ", nome=" + nome + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idprofessor;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Professor other = (Professor) obj;
+		if (idprofessor != other.idprofessor)
+			return false;
+		return true;
 	}
 	
 }
