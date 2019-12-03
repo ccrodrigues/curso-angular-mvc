@@ -1,0 +1,44 @@
+<p>Professor Funciona!</p>
+
+{{ nomeProfessor }}
+
+<br/>
+
+{{ 111+222 }}
+
+<br/><br/>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Novo Professor:</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Usuário" aria-label="Usuário" aria-describedby="basic-addon1"
+    (keyup.enter)="mostrarMensagem(campoTexto.value)" (keyup)="onNomeChange(campoTexto.value)"
+    #campoTexto
+    >
+  </div>
+
+  <br/><br/>
+
+  <a href="{{ url }}" target="blank">Direcionamento Interpolação</a>
+
+  <br/><br/>
+
+  <a [href]="url" target="blank">Direcionamento Property Biding</a>
+
+  <br/><br/>
+
+  <button class="btn btn-primary" (click)="mostrarMensagemBotao(campoTexto.value)">
+    Botão Botão Botão
+  </button>
+
+  <br/><br/>
+
+  <div class="input-group mb-3">
+    
+    <input type="text" class="form-control" [(ngModel)]="nomeNovoProfessor2WayDatabiding"
+    
+    >
+  </div>
+
+  <p>Digitei : {{ nomeNovoProfessor2WayDatabiding }} </p>
