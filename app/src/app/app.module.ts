@@ -7,11 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AlunoModule } from './aluno/aluno.module';
-import { ProfessorModule } from './professor/professor.module';
+import { MenuComponent } from './menu/menu.component';
+
+// import { ProfessorModule } from './professor/professor.module'
+// import { ProfessorRoutingModule } from './professor/professor-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,8 @@ import { ProfessorModule } from './professor/professor.module';
     HttpClientModule,
 
     AlunoModule,
-    ProfessorModule
+  //  ProfessorModule,
+  //  ProfessorRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

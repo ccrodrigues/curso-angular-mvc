@@ -10,29 +10,38 @@ import { ThrowStmt } from '@angular/compiler';
 export class ProfessorComponent implements OnInit {
 
   nomeProfessor : any = "Fabrizio";
-
   url = "http://google.com";
-
-  professores;
-
+  professores = [];
   contador : number = 0;
-
   isMostrarMensagem : boolean = true;
-
   isMouseOver : boolean = false;
-
-  vetorCaina : string[];
+  vetorCaina : string[] = [];
 
   constructor(private ps : ProfessorService) {  }
 
+  receberIdadeDoFilho(eventoDoFilho){
+    console.log(eventoDoFilho);
+    console.log(eventoDoFilho.idade);
+  }
+
+  getBackgroundColor(){
+  //isMouseOver == true ? 'yellow' : 'white'
+    if (this.isMouseOver == true){
+      return 'yellow';
+    }
+    else {
+      return 'white';
+    }
+  }
+
   OnMouseOver() {
-    console.log('onMouseOver');
+    // console.log('onMouseOver');
     this.isMouseOver = true;
     // this.vetorCaina.push('Cainã');
   }
 
   OnMouseLeave() {
-    console.log('onMouseLeave');
+    // console.log('onMouseLeave');
     this.isMouseOver = false;
     // this.vetorCaina.push('Cainã');
   }

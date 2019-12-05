@@ -1,7 +1,12 @@
-<router-outlet></router-outlet>
+<app-menu *ngIf="isMostrarMenu == true"></app-menu>
 
-<p>Este é um parágrafo!</p>
+  <div class="container" >
 
-<app-aluno></app-aluno>
+    <!-- <button (click)="onMostrarMenu()"> Alterar Menu </button> -->
 
-<app-professor></app-professor>
+    <router-outlet></router-outlet>
+    <!-- <app-aluno></app-aluno>
+    <app-professor></app-professor> -->
+    
+  </div>
+

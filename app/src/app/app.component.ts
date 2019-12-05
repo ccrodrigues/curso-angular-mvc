@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  isMostrarMenu = true;
+
+  onMostrarMenu(){
+    this.isMostrarMenu = !this.isMostrarMenu;
+  }
 }

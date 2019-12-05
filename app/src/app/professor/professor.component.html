@@ -1,14 +1,14 @@
 <p>Professor Funciona!</p>
 
-{{ nomeProfessor }}
+<!-- {{ nomeProfessor }}
 
 <br/>
 
-{{ 111+222 }}
+{{ 111+222 }} -->
 
-<br/><br/>
+<!-- <br/><br/> -->
 
-  <div class="input-group mb-3">
+  <!-- <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Novo Professor:</span>
     </div>
@@ -18,38 +18,36 @@
     >
   </div>
 
-  <br/><br/>
+  <br/><br/> -->
 
-  <a href="{{ url }}" target="blank">Direcionamento Interpolação</a>
+  <!-- <a href="{{ url }}" target="blank">Direcionamento Interpolação</a>
 
   <br/><br/>
 
   <a [href]="url" target="blank">Direcionamento Property Biding</a>
 
-  <br/><br/>
+  <br/><br/> -->
 
-  <button class="btn btn-primary" (click)="mostrarMensagemBotao(campoTexto.value)">
+  <!-- <button class="btn btn-primary" (click)="mostrarMensagemBotao(campoTexto.value)">
     Botão Botão Botão
-  </button>
+  </button> -->
 
   <br/><br/>
 
-  <div class="input-group mb-3">
+  <!-- <div class="input-group mb-3">
     
     <input type="text" class="form-control" [(ngModel)]="nomeNovoProfessor2WayDatabiding"
     
     >
-  </div>
+  </div> -->
 
-  <p>Digitei : {{ nomeNovoProfessor2WayDatabiding }} </p>
+  <!-- <p>Digitei : {{ nomeNovoProfessor2WayDatabiding }} </p> -->
 
   <p>Professores: </p>
 
-  <ul>
+  <!-- <ul>
     <li *ngFor= "let p of professores" > {{ p.nome }} </li>
-  </ul>
-
-  <!-- <br/><br/>
+  </ul> -->
 
 <div *ngIf="professores.length > 1">
     <table class="table table-striped table-dark">
@@ -69,33 +67,41 @@
     </table>
  </div>
 
-  <div *ngIf="isMostrarMensagem == true" class="alert alert-danger" role="alert">
+  <!-- <div *ngIf="isMostrarMensagem == true" class="alert alert-danger" role="alert">
     Não há professores suficientes!
   </div> -->
 
-  <button class="btn btn-primary" (click)="devoMostrarMensagem()" > Mostrar Mensagem! </button>
+  <!-- <br/><br/>
 
-  <br/><br/>
+  <button class="btn btn-primary" (click)="devoMostrarMensagem()" > Mostrar Mensagem! </button> -->
+
+  <!-- <br/><br/>
 
   <button class="btn btn-primary" (click)="addContador()" >+</button>
 
   {{ contador }}
 
-  <button class="btn btn-primary" (click)="removeContador()">-</button>
+  <button class="btn btn-primary" (click)="removeContador()">-</button> -->
 
-  <div *ngIf="contador < 5" class="alert alert-danger" role="alert">
+  <!-- <div *ngIf="contador < 5" class="alert alert-danger" role="alert">
     Contador menor que 5
   </div>
 
   <div *ngIf="contador > 4" class="alert alert-danger" role="alert">
     Contador maior que 5
-  </div>
+  </div> -->
 
-  <p class="aumentarFonte" 
+  <!-- <p class="aumentarFonte" 
+  [style.backgroudColor]="getBackgroundColor()"
   [class.aumentarFonte]="isMouseOver == true"
   [class.fundoAmarelo]="isMouseOver == true"
   (mouseover)="OnMouseOver()" (mouseleave)="OnMouseLeave()"
-  >Estou com muito sono.</p>
+  >Estou com muito sono.</p> -->
 
   <!-- <p *ngFor="let v of vetorCaina" > {{ v }}</p>
   {{ vetorCaina | json }} -->
+
+  <!-- <app-professor-detalhes [profFilho]="professores" (idadeEmitida)="receberIdadeDoFilho($event)"
+  ></app-professor-detalhes> -->
+
+  

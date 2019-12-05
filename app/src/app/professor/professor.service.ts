@@ -9,11 +9,18 @@ export class ProfessorService {
 professores;
 
   constructor(private http: HttpClient) {
-    this.professores = this.http.get('http://localhost:8080/professores');
+    
   }
 
   getALL(){
+    this.professores = this.http.get('http://localhost:8080/professores');
     return this.professores;
+  }
+
+  getOneProfessor(id){
+   // return this.professores = this.http.get('http://localhost:8080/professores/' + id);
+   this.professores = this.http.get(`http://localhost:8080/professores/${id}`);
+   return this.professores;
   }
 
 }

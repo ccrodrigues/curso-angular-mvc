@@ -49,6 +49,15 @@ public class ProfessorController {
 
 	}
 	
+	@RequestMapping(value="/professores/{id}", method= RequestMethod.GET)
+	public Professor buscaId(@PathVariable("id") int idProfessor) {
+		
+		System.out.println("ID Professor " + idProfessor);
+		
+		return service.id(idProfessor).get();
+
+	}
+	
 //	@RequestMapping(value="/professor/{id}", method= RequestMethod.DELETE)
 //	public List<Professor> deleteProfessor(@PathVariable("id") int idProfessor) {
 //		
