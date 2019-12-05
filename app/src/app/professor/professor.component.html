@@ -42,3 +42,60 @@
   </div>
 
   <p>Digitei : {{ nomeNovoProfessor2WayDatabiding }} </p>
+
+  <p>Professores: </p>
+
+  <ul>
+    <li *ngFor= "let p of professores" > {{ p.nome }} </li>
+  </ul>
+
+  <!-- <br/><br/>
+
+<div *ngIf="professores.length > 1">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>  
+          <th scope="col" class="text-center">Id</th>
+          <th scope="col" class="text-center">Nome</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let p of professores">
+          <th scope="row" class="text-center"> {{ p.idprofessor }} </th>
+          <td class="text-center"> {{ p.nome }} </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
+
+  <div *ngIf="isMostrarMensagem == true" class="alert alert-danger" role="alert">
+    Não há professores suficientes!
+  </div> -->
+
+  <button class="btn btn-primary" (click)="devoMostrarMensagem()" > Mostrar Mensagem! </button>
+
+  <br/><br/>
+
+  <button class="btn btn-primary" (click)="addContador()" >+</button>
+
+  {{ contador }}
+
+  <button class="btn btn-primary" (click)="removeContador()">-</button>
+
+  <div *ngIf="contador < 5" class="alert alert-danger" role="alert">
+    Contador menor que 5
+  </div>
+
+  <div *ngIf="contador > 4" class="alert alert-danger" role="alert">
+    Contador maior que 5
+  </div>
+
+  <p class="aumentarFonte" 
+  [class.aumentarFonte]="isMouseOver == true"
+  [class.fundoAmarelo]="isMouseOver == true"
+  (mouseover)="OnMouseOver()" (mouseleave)="OnMouseLeave()"
+  >Estou com muito sono.</p>
+
+  <!-- <p *ngFor="let v of vetorCaina" > {{ v }}</p>
+  {{ vetorCaina | json }} -->

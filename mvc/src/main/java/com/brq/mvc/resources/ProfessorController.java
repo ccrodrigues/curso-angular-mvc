@@ -22,13 +22,13 @@ public class ProfessorController {
 	
 	List <Professor> listaProfessor = new ArrayList<Professor> ();
 	
-	@RequestMapping(value="/professor", method= RequestMethod.GET)
+	@RequestMapping(value="/professores", method= RequestMethod.GET)
 	public List<Professor> getAllProfessores() {
 		
 		return service.getAllProfessores();
 	}
 	
-	@RequestMapping(value="/professor", method= RequestMethod.POST)
+	@RequestMapping(value="/professores", method= RequestMethod.POST)
 	public Professor criarProfessor (@RequestBody Professor prof) {
 /*		Professor p1 = new Professor();
 		p1.setId(1);
@@ -40,7 +40,7 @@ public class ProfessorController {
 		return service.criarProfessor(prof);
 		}
 	
-	@RequestMapping(value="/professor/{id}", method= RequestMethod.GET)
+	@RequestMapping(value="/professores/{id}", method= RequestMethod.GET)
 	public Professor getProfessor(@PathVariable("id") int idProfessor) {
 		
 		System.out.println("ID Professor " + idProfessor);

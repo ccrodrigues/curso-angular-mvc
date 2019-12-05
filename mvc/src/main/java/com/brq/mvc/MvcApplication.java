@@ -51,17 +51,23 @@ public class MvcApplication implements CommandLineRunner {
 		
 		Professor p1 = new Professor();
 		p1.setNome("Prof 1");
+		Professor p2 = new Professor();
+		p2.setNome("Prof 2");
 		
 		Curso c1 = new Curso();
 		c1.setDescricao("Curso 1");
 		c1.setProfessor(p1);
+		Curso c2 = new Curso();
+		c2.setDescricao("Curso 2");
 		
 		Aluno a1 = new Aluno();
 		a1.setIdade(20);
 		a1.setNome("Caio");
 		a1.setCurso(c1);
 		professorRepository.save(p1);
+		professorRepository.save(p2);
 		cursoRepository.save(c1);
+		cursoRepository.save(c2);
 		alunoRepository.save(a1);
 		
 		Categoria cat1 = new Categoria();
