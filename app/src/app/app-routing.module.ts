@@ -5,7 +5,8 @@ import { AlunoComponent } from './aluno/aluno.component';
 
 const routes: Routes = [
   { path : 'professores', loadChildren: './professor/professor.module#ProfessorModule' },
-  { path : 'alunos' , component: AlunoComponent}
+  { path : 'alunos' , loadChildren: './aluno/aluno.module#AlunoModule' },
+  { path : 'forms' , loadChildren: './forms-exemplo/forms-exemplo.module#FormsExemploModule' }
 ];
 
 @NgModule({

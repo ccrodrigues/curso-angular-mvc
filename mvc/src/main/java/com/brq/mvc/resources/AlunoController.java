@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.mvc.domain.Aluno;
+import com.brq.mvc.domain.Professor;
 import com.brq.mvc.resources.exception.AlunoNotFoundException;
 import com.brq.mvc.services.AlunoService;
 
@@ -37,6 +38,15 @@ public class AlunoController {
 		}
 		
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@RequestMapping(value="/alunos/{id}", method= RequestMethod.GET)
+	public Aluno buscaId(@PathVariable("id") int idAluno) {
+		
+		System.out.println("ID Aluno " + idAluno);
+		
+		return service.id(idAluno).get();
+
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)

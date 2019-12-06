@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AlunoModule } from './aluno/aluno.module';
 import { MenuComponent } from './menu/menu.component';
 
 // import { ProfessorModule } from './professor/professor.module'
@@ -23,7 +22,7 @@ import { MenuComponent } from './menu/menu.component';
     FormsModule,
     HttpClientModule,
 
-    AlunoModule,
+  //  AlunoModule,
   //  ProfessorModule,
   //  ProfessorRoutingModule
   ],

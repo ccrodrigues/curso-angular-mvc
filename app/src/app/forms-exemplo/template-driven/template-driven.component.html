@@ -1,0 +1,33 @@
+<p>Template-Driven Funcionou!</p>
+
+<form #meuForm="ngForm" (submit)="onSubmit(meuForm)">
+        <div class="form-group">
+          <label for="exampleInputEmail1">E-mail</label>
+          <input type="email" required name="email"
+          class="form-control" [(ngModel)]="emailModel" #email="ngModel" placeholder="Insira Seu E-mail">
+          <!-- <small id="emailHelp" class="form-text text-muted">Nós nunca armazenamos seus dados.</small> -->
+        <app-msg-erro [isError]="isErrorCampo(email)" mensagem="Campo Obrigatório"></app-msg-erro>
+        </div>
+        <br/>
+
+        <app-debug-campo [variavel]="email" ></app-debug-campo>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" required name="password"
+          class="form-control" [(ngModel)]="passModel" #password="ngModel" placeholder="Insira Sua Senha">
+          <app-msg-erro [isError]="isErrorCampo(password)" mensagem="Campo Obrigatório"></app-msg-erro>
+        </div>
+        <br/>
+
+        <app-debug-campo [variavel]="password" ></app-debug-campo>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" [disabled]="meuForm.valid == false" class="btn btn-primary">Submit</button>
+      </form>
+      <br/>
+
+      <app-debug-form [varform]="meuForm"></app-debug-form>

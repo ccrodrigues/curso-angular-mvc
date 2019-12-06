@@ -40,14 +40,14 @@ public class ProfessorController {
 		return service.criarProfessor(prof);
 		}
 	
-	@RequestMapping(value="/professores/{id}", method= RequestMethod.GET)
-	public Professor getProfessor(@PathVariable("id") int idProfessor) {
-		
-		System.out.println("ID Professor " + idProfessor);
-		
-		return listaProfessor.get(idProfessor);
-
-	}
+//	@RequestMapping(value="/professores/{id}", method= RequestMethod.GET)
+//	public Professor getProfessor(@PathVariable("id") int idProfessor) {
+//		
+//		System.out.println("ID Professor " + idProfessor);
+//		
+//		return listaProfessor.get(idProfessor);
+//
+//	}
 	
 	@RequestMapping(value="/professores/{id}", method= RequestMethod.GET)
 	public Professor buscaId(@PathVariable("id") int idProfessor) {

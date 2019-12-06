@@ -88,4 +88,8 @@ public Aluno save(Aluno aluno) {
 			return null;
 		}
 	}
+	
+	public Optional<Aluno> id(int id) {
+		return repo.findById(id);
+	}
 }

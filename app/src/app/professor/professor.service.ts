@@ -8,9 +8,7 @@ export class ProfessorService {
 
 professores;
 
-  constructor(private http: HttpClient) {
-    
-  }
+  constructor(private http: HttpClient) { }
 
   getALL(){
     this.professores = this.http.get('http://localhost:8080/professores');

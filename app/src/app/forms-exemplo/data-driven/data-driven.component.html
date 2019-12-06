@@ -1,0 +1,32 @@
+<p>Data-Driven Funcionou!</p>
+
+<form [formGroup]="meuForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">E-mail</label>
+          <input type="email" required
+          class="form-control" formControlName="email"
+          placeholder="Insira Seu E-mail">
+          <app-msg-erro [isError]="isErrorCampo(meuForm.controls.email)" mensagem="Campo Obrigatório"></app-msg-erro>
+        </div>
+
+        <app-debug-campo [variavel]="meuForm.controls.email"></app-debug-campo>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" required
+          class="form-control" formControlName="senha"
+          placeholder="Insira Sua Senha">
+          <app-msg-erro [isError]="isErrorCampo(meuForm.controls.senha)" mensagem="Campo Obrigatório"></app-msg-erro>
+        </div>
+
+        <br/>
+        <app-debug-campo [variavel]="meuForm.controls.senha"></app-debug-campo>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      
+      <app-debug-form [varform]="meuForm"></app-debug-form>
