@@ -14,7 +14,8 @@ public class Nota implements Serializable {
 	
 	//cria a tabela
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int valor;
 	private String nome;
@@ -43,7 +44,7 @@ public class Nota implements Serializable {
 		this.nome = nome;
 	}
 	
-	public Nota() {}
+	public Nota(int i, int j, String string) {}
 	@Override
 	public String toString() {
 		return "Nota [id=" + id + ", valor=" + valor + ", nome=" + nome + "]";

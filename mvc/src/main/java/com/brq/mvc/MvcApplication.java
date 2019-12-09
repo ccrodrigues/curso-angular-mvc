@@ -1,6 +1,9 @@
 package com.brq.mvc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -47,8 +50,46 @@ public class MvcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-	//	notaRepository.save(new Nota(0, 1, "Nota "));
 		
+		this.notaDemo();		
+		this.cursoProfessorDemo();		
+		this.categoriaProdutoDemo();
+//		this.funcaoLambda();
+		
+	} // fim do método run
+	
+	private void funcaoLambda() {
+		
+		List<Integer> listaAlunos = new ArrayList<Integer>();
+		List<Integer> listaAlunosDobro = new ArrayList<Integer>();
+		
+		for (int i = 1; i <= 9; i++) {
+			listaAlunos.add(i);
+		}
+/*			listaAlunosDobro.add(2*i);
+		}
+		
+		// 1º ->
+		// listaAlunos.stream().map( n -> 2*n )
+							.forEach( p -> System.out.println(p) ); */
+		
+		listaAlunosDobro = listaAlunos
+				.stream()
+				.filter(i -> i > 2)
+				.map( n -> 2*n )
+				.collect(Collectors.toList());
+		
+		System.out.println(listaAlunos);
+		System.out.println(listaAlunosDobro);
+//		
+		// List<Integer> listaNumeros = Arrays.asList(1,2,3,4,5,6,7,8,9);
+	}
+	
+	private void notaDemo() {
+		notaRepository.save(new Nota(0, 1, "NOTA 1: "));
+	}
+	
+	private void cursoProfessorDemo() {
 		Professor p1 = new Professor();
 		p1.setNome("Prof 1");
 		Professor p2 = new Professor();
@@ -60,7 +101,11 @@ public class MvcApplication implements CommandLineRunner {
 		c1.setProfessor(p1);
 		Curso c2 = new Curso();
 		c2.setDescricao("Curso 2");
-	//	c2.setProfessor(p2);
+		
+		professorRepository.save(p1);
+		professorRepository.save(p2);
+		cursoRepository.save(c1);
+		cursoRepository.save(c2);
 		
 		Aluno a1 = new Aluno();
 		a1.setIdade(20);
@@ -70,13 +115,12 @@ public class MvcApplication implements CommandLineRunner {
 		a2.setIdade(26);
 		a2.setNome("Luan");
 		a2.setCurso(c2);
-		professorRepository.save(p1);
-		professorRepository.save(p2);
-		cursoRepository.save(c1);
-		cursoRepository.save(c2);
+		
 		alunoRepository.save(a1);
 		alunoRepository.save(a2);
-		
+	}
+	
+	private void categoriaProdutoDemo() {
 		Categoria cat1 = new Categoria();
 		cat1.setNome("CAT 1");
 		
