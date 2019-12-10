@@ -15,6 +15,8 @@ export class ProfessorFormComponent implements OnInit {
   isEdicao = false;
   professorDaAPI;
   prof;
+  varForm;
+  variavel;
 
   // ActivatedRoute precisa para dar a rota
   constructor(private formBuilder: FormBuilder,
@@ -52,6 +54,14 @@ export class ProfessorFormComponent implements OnInit {
       console.log('Criação');
       this.isEdicao = false;
     }
+  }
+
+  getCampo(nomeCampo){
+    return this.meuForm.get(nomeCampo);
+  }
+
+  isErrorCampo(nomeCampo){
+    return  ( !this.meuForm.get(nomeCampo).valid && this.meuForm.get(nomeCampo).touched );
   }
 
   sub() {

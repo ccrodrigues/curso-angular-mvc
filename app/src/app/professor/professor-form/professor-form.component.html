@@ -6,16 +6,26 @@
           <input type="id"
           class="form-control" formControlName="idprofessor"
           placeholder="ID: ">
+          <app-msg-erro [isError]="isErrorCampo('idprofessor')" 
+          mensagem="Campo Obrigatório"></app-msg-erro>
         </div>
+
+        <app-debug-campo [variavel]="getCampo('idprofessor')" ></app-debug-campo>
 
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text"
           class="form-control" formControlName="nome"
           placeholder="Nome do Professor: ">
+          <app-msg-erro [isError]="isErrorCampo('nome')" 
+          mensagem="Campo Obrigatório"></app-msg-erro>
         </div>
 
         <br/>
 
+        <app-debug-campo [variavel]="getCampo('nome')" ></app-debug-campo>
+
         <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
+      <br/>
+      <app-debug-form [varform]="meuForm"></app-debug-form>

@@ -6,19 +6,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { DataDrivenComponent } from './data-driven/data-driven.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MsgErroComponent } from './msg-erro/msg-erro.component';
-import { DebugCampoComponent } from './debug-campo/debug-campo.component';
-import { DebugFormComponent } from './debug-form/debug-form.component';
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [TemplateDrivenComponent, DataDrivenComponent, MsgErroComponent, DebugCampoComponent, DebugFormComponent],
+  declarations: [TemplateDrivenComponent, DataDrivenComponent],
   imports: [
     CommonModule,
     FormsExemploRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class FormsExemploModule { }

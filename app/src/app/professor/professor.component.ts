@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfessorService } from './professor.service';
 import { ThrowStmt } from '@angular/compiler';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-professor',
@@ -16,6 +17,7 @@ export class ProfessorComponent implements OnInit {
   isMostrarMensagem: boolean = true;
   isMouseOver: boolean = false;
   vetorCaina: string[] = [];
+  meuForm: FormGroup;
 
   constructor(private ps: ProfessorService) { }
 
