@@ -1,4 +1,11 @@
-<p>Professor Funciona!</p>
+<br/>
+
+<div class="float-right">
+<button [routerLink]="['/professores/novo']"
+ class="btn btn-primary">Adicionar Professor</button>
+</div>
+
+<br/>
 
 <!-- {{ nomeProfessor }}
 
@@ -32,8 +39,6 @@
     Botão Botão Botão
   </button> -->
 
-  <br/><br/>
-
   <!-- <div class="input-group mb-3">
     
     <input type="text" class="form-control" [(ngModel)]="nomeNovoProfessor2WayDatabiding"
@@ -49,12 +54,13 @@
     <li *ngFor= "let p of professores" > {{ p.nome }} </li>
   </ul> -->
 
-<div *ngIf="professores.length > 1">
+<div>
     <table class="table table-striped table-dark">
       <thead>
         <tr>  
           <th scope="col" class="text-center">Id</th>
           <th scope="col" class="text-center">Nome</th>
+          <th scope="col" class="text-center">Ações</th>
         </tr>
       </thead>
       
@@ -62,6 +68,14 @@
         <tr *ngFor="let p of professores">
           <th scope="row" class="text-center"> {{ p.idprofessor }} </th>
           <td class="text-center"> {{ p.nome }} </td>
+
+          <td class="text-center">
+            <button type="submit" class="btn btn-info" style="margin-right: 10px;" 
+            [routerLink]="['/professores/', p.idprofessor]">Editar</button>
+            
+            <button type="submit" class="btn btn-danger" (click)="del(p.idprofessor)">Excluir</button>
+          </td>
+
         </tr>
       </tbody>
     </table>

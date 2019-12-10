@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-data-driven',
@@ -13,13 +13,19 @@ export class DataDrivenComponent implements OnInit {
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit() {
-
     this.meuForm = this.formBuilder.group( 
     { 
-      email : ['', [Validators.required] ],
+      email : ['', [Validators.required, Validators.max(3)] ],
       senha : ['', [Validators.required] ]
     }
     );
   }
 
+  onSubmit(){
+    console.log(this.meuForm);
+  }
+
+  isErrorCampo(campo){
+    return (campo.valid == false && campo.touched == true);
+  }
 }

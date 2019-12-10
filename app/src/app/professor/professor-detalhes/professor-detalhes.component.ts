@@ -18,8 +18,6 @@ export class ProfessorDetalhesComponent implements OnInit {
       private professorService : ProfessorService
     ) {
     console.log(this.ar);
-    
-    
 
     this.ar.params.subscribe( ( dados ) => {
       console.log(dados);

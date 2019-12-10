@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.brq.mvc.domain.Produto;
 import com.brq.mvc.domain.Professor;
 import com.brq.mvc.services.ProfessorService;
 
@@ -58,11 +60,18 @@ public class ProfessorController {
 
 	}
 	
-//	@RequestMapping(value="/professor/{id}", method= RequestMethod.DELETE)
-//	public List<Professor> deleteProfessor(@PathVariable("id") int idProfessor) {
-//		
-//		
-//		System.out.println("ID Professor " + idProfessor);
-//		return listaProfessor;
-//	}
+	@RequestMapping(value="/professores/{id}", method = RequestMethod.PATCH)
+	public Professor updateProfessor(@PathVariable("id") int idProfessor,
+			@RequestBody Professor professor) {
+		
+		return service.updateProfessor(idProfessor, professor);
+	}
+	
+	@RequestMapping(value="/professores/{id}", method= RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteProfessor(@PathVariable("id") int idProfessor) {
+		
+		
+		System.out.println("ID Professor " + idProfessor);
+		return ResponseEntity.ok().body(service.deleteById(idProfessor));
+	}
 }

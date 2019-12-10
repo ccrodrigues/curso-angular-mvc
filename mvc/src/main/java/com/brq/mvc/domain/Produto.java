@@ -22,8 +22,8 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	@NotNull(message = "O NOME NÃO PODE ESTAR EM BRANCO !!!!!!!!!")

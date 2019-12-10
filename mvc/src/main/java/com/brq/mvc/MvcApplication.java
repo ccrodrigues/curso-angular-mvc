@@ -92,9 +92,10 @@ public class MvcApplication implements CommandLineRunner {
 	private void cursoProfessorDemo() {
 		Professor p1 = new Professor();
 		p1.setNome("Prof 1");
+//		p1.setIdprofessor(1);
 		Professor p2 = new Professor();
 		p2.setNome("Prof 2");
-		p2.setIdprofessor(2);
+//		p2.setIdprofessor(2);
 		
 		Curso c1 = new Curso();
 		c1.setDescricao("Curso 1");

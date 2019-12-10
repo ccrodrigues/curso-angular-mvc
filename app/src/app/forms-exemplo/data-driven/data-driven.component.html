@@ -3,7 +3,7 @@
 <form [formGroup]="meuForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="exampleInputEmail1">E-mail</label>
-          <input type="email" required
+          <input type="email"
           class="form-control" formControlName="email"
           placeholder="Insira Seu E-mail">
           <app-msg-erro [isError]="isErrorCampo(meuForm.controls.email)" mensagem="Campo Obrigatório"></app-msg-erro>
@@ -13,7 +13,7 @@
 
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" required
+          <input type="password"
           class="form-control" formControlName="senha"
           placeholder="Insira Sua Senha">
           <app-msg-erro [isError]="isErrorCampo(meuForm.controls.senha)" mensagem="Campo Obrigatório"></app-msg-erro>

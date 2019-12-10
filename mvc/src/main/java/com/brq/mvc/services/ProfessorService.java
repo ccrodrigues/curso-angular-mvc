@@ -31,4 +31,23 @@ public class ProfessorService {
 	public Optional<Professor> id(int id) {
 		return repo.findById(id);
 	}
+
+	public Professor updateProfessor(int id,Professor professor) {
+		Optional<Professor> p = repo.findById(id);
+		Professor ret ;
+		if (p.isPresent()) {
+			p.get().setNome(professor.getNome());
+			ret = repo.save(p.get());
+		}
+		else {
+			ret = p.get();
+		}
+		
+		return ret;
+	}
+
+	public boolean deleteById(int id) {
+		repo.deleteById(id);
+		return true;
+	}
 }

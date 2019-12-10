@@ -9,24 +9,24 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class ProfessorComponent implements OnInit {
 
-  nomeProfessor : any = "Fabrizio";
+  nomeProfessor: any = "Fabrizio";
   url = "http://google.com";
   professores = [];
-  contador : number = 0;
-  isMostrarMensagem : boolean = true;
-  isMouseOver : boolean = false;
-  vetorCaina : string[] = [];
+  contador: number = 0;
+  isMostrarMensagem: boolean = true;
+  isMouseOver: boolean = false;
+  vetorCaina: string[] = [];
 
-  constructor(private ps : ProfessorService) {  }
+  constructor(private ps: ProfessorService) { }
 
-  receberIdadeDoFilho(eventoDoFilho){
+  receberIdadeDoFilho(eventoDoFilho) {
     console.log(eventoDoFilho);
     console.log(eventoDoFilho.idade);
   }
 
-  getBackgroundColor(){
-  //isMouseOver == true ? 'yellow' : 'white'
-    if (this.isMouseOver == true){
+  getBackgroundColor() {
+    //isMouseOver == true ? 'yellow' : 'white'
+    if (this.isMouseOver == true) {
       return 'yellow';
     }
     else {
@@ -54,13 +54,13 @@ export class ProfessorComponent implements OnInit {
     this.contador--;
   }
 
-  devoMostrarMensagem(){
+  devoMostrarMensagem() {
     this.isMostrarMensagem = !this.isMostrarMensagem;
   }
 
-/* function (meudado) {
-        console.log(meudado);
-        this.professores = meudado; */
+  /* function (meudado) {
+          console.log(meudado);
+          this.professores = meudado; */
 
   ngOnInit() {
     this.ps.getALL().subscribe(
@@ -72,13 +72,13 @@ export class ProfessorComponent implements OnInit {
     //arrow function
   }
 
-  getNomeProfessor ()  {
+  getNomeProfessor() {
 
     let numero = 10;
     return this.nomeProfessor;
   }
 
-  mostrarMensagem(NomeNovoProfessor){
+  mostrarMensagem(NomeNovoProfessor) {
     alert('O novo professor é o ' + NomeNovoProfessor);
   }
 
@@ -86,7 +86,24 @@ export class ProfessorComponent implements OnInit {
     alert(valor);
   }
 
-  onNomeChange(digitado){
-    this.nomeProfessor=digitado;
+  onNomeChange(digitado) {
+    this.nomeProfessor = digitado;
+  }
+
+  del(idProfessor) {
+    this.ps.deleteProfessor(idProfessor).subscribe(
+      (resposta) => {
+
+        let index = -1;
+        for (let i = 0; i < this.professores.length; i++) {
+          if (this.professores[i].idprofessor == idProfessor) {
+            index = i;
+            break;
+          }
+        }
+
+        this.professores.splice(index, 1);
+      }
+    );
   }
 }

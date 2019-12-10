@@ -5,7 +5,6 @@
           <label for="exampleInputEmail1">E-mail</label>
           <input type="email" required name="email"
           class="form-control" [(ngModel)]="emailModel" #email="ngModel" placeholder="Insira Seu E-mail">
-          <!-- <small id="emailHelp" class="form-text text-muted">Nós nunca armazenamos seus dados.</small> -->
         <app-msg-erro [isError]="isErrorCampo(email)" mensagem="Campo Obrigatório"></app-msg-erro>
         </div>
         <br/>
