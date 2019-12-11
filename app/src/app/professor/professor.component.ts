@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessorService } from './professor.service';
 import { ThrowStmt } from '@angular/compiler';
 import { FormGroup } from '@angular/forms';
+import { ProfessorModel } from '../shared/models/professor.model';
 
 @Component({
   selector: 'app-professor',
@@ -10,9 +11,10 @@ import { FormGroup } from '@angular/forms';
 })
 export class ProfessorComponent implements OnInit {
 
+  professores : ProfessorModel[] = [];
+
   nomeProfessor: any = "Fabrizio";
   url = "http://google.com";
-  professores = [];
   contador: number = 0;
   isMostrarMensagem: boolean = true;
   isMouseOver: boolean = false;
