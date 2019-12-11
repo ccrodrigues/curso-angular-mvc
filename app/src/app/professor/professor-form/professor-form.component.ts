@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorService } from '../professor.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProfessorModel } from 'src/app/shared/models/professor.model';
 
 @Component({
   selector: 'app-professor-form',
@@ -14,9 +15,7 @@ export class ProfessorFormComponent implements OnInit {
   idRota;
   isEdicao = false;
   professorDaAPI;
-  prof;
-  varForm;
-  variavel;
+  professor = new ProfessorModel();
 
   // ActivatedRoute precisa para dar a rota
   constructor(private formBuilder: FormBuilder,
@@ -26,10 +25,11 @@ export class ProfessorFormComponent implements OnInit {
 
   ngOnInit() {
     // criando o formulário
-    this.meuForm = this.formBuilder.group(
-      {
-        idprofessor: ['1', [Validators.required, Validators.max(3)]],
-        nome: ['Prof ', [Validators.required]]
+    this.meuForm = this.formBuilder.group({
+        professor : this.formBuilder.group({
+          idprofessor: ['', [Validators.required]],
+          nome: ['', [Validators.required]]
+        })
       });
 
     this.activatedRoute.params.subscribe((data) => // indica qual a rota certa
@@ -45,8 +45,10 @@ export class ProfessorFormComponent implements OnInit {
         (professorDaAPI) => {
           this.meuForm.patchValue( // só funciona no data driven - template driven só ngModel
             {
-              idprofessor: professorDaAPI['idprofessor'],
-              nome: professorDaAPI['nome']
+              professor : {
+                idprofessor: professorDaAPI['idprofessor'],
+                nome: professorDaAPI['nome']
+              }
             })
         })
     }
@@ -56,39 +58,37 @@ export class ProfessorFormComponent implements OnInit {
     }
   }
 
-  getCampo(nomeCampo){
-    return this.meuForm.get(nomeCampo);
+  isErrorCampo(nomeCampo){
+    return  ( !this.getCampo(nomeCampo).valid && this.getCampo(nomeCampo).touched );
   }
 
-  isErrorCampo(nomeCampo){
-    return  ( !this.meuForm.get(nomeCampo).valid && this.meuForm.get(nomeCampo).touched );
+  getCampo(nomeCampo){
+    return this.meuForm.get(nomeCampo);
   }
 
   sub() {
     console.log(this.meuForm);
 
     if (this.isEdicao == false){
-      let prof = {
-        idprofessor: null,
-        nome: this.meuForm.value.nome
-      }
-
-
-      this.professorService.addProfessor(prof).subscribe(
+      // let prof = {
+      //   idprofessor: null,
+      //   nome: this.meuForm.value.nome
+      // }
+      this.professorService.addProfessor(this.meuForm.value.professor).subscribe(
         (resposta) => {
           console.log(resposta);
-          this.router.navigate(['professores']);
+          this.router.navigate(['/professores']);
         }
       );
     }
 
     else{
-      let prof = {
-        idprofessor: this.meuForm.value.idprofessor,
-        nome: this.meuForm.value.nome
-      }
+      // let prof = {
+      //   idprofessor: this.meuForm.value.idprofessor,
+      //   nome: this.meuForm.value.nome
+      // }
 
-      this.professorService.updateProfessor(this.idRota, prof).subscribe(
+      this.professorService.updateProfessor(this.idRota, this.meuForm.value.professor).subscribe(
         (resposta) => {
           console.log(resposta);
           this.router.navigate(['professores']);

@@ -7,16 +7,18 @@ import { TemplateDrivenComponent } from './template-driven/template-driven.compo
 import { DataDrivenComponent } from './data-driven/data-driven.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { CicloComponent } from './ciclo/ciclo.component';
+import { TextoComponent } from './texto/texto.component';
 
 @NgModule({
-  declarations: [TemplateDrivenComponent, DataDrivenComponent],
+  declarations: [TemplateDrivenComponent, DataDrivenComponent, CicloComponent, TextoComponent],
   imports: [
     CommonModule,
     FormsExemploRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class FormsExemploModule { }

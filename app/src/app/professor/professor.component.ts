@@ -98,15 +98,11 @@ export class ProfessorComponent implements OnInit {
     this.ps.deleteProfessor(idProfessor).subscribe(
       (resposta) => {
 
-        let index = -1;
-        for (let i = 0; i < this.professores.length; i++) {
-          if (this.professores[i].idprofessor == idProfessor) {
-            index = i;
-            break;
-          }
-        }
-
-        this.professores.splice(index, 1);
+        this.professores
+        .splice(
+          this.professores.findIndex( p => p.idprofessor == idProfessor)
+        , 1);
+        
       }
     );
   }
