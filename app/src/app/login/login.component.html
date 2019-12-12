@@ -1,0 +1,19 @@
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="usuario">Usuário</label>
+          <input type="email" 
+          class="form-control" formControlName="usuario"
+          placeholder="Insira Seu Usuário">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Senha</label>
+          <input type="password"
+          class="form-control" formControlName="senha"
+          placeholder="Insira Sua Senha">
+        </div>
+        <br/>
+        <div class="form-check">
+        </div>
+        <button type="submit" class="btn btn-primary">Efetuar Login</button>
+      </form>

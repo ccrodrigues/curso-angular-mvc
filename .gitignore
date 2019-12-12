@@ -1,1 +1,6 @@
 /.metadata/
+/SoapServer/nbproject/private/
+/SoapServer/build/
+/ClientSoap/nbproject/private/
+/ClientSoap/build/
+/ClientSoap/dist/
